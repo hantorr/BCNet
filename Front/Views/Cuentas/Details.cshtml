@@ -1,0 +1,42 @@
+﻿@model Front.Models.Cuentas
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cuentas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuenta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cuenta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CuentaBc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CuentaBc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroDoc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroDoc)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
