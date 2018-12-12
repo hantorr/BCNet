@@ -13,11 +13,25 @@ namespace Front.Controllers
     {
 
         BlockChainTXContext data = new BlockChainTXContext();
+        ProgramServer test = new ProgramServer();
 
         // GET: Cuentas
         public ActionResult Index()
         {
-            return View();
+            CuentaBO cuenta = new CuentaBO();
+            List<CuentaBO> cuentas = new List<CuentaBO>();
+            
+            Task<string[]> cuentaBCRes = test.getAccounts();
+            List<string> lista = cuentaBCRes.Result.ToList();
+
+            foreach (string item in lista)
+            {
+                cuenta.CuentaBc = item;
+                cuenta = new CuentaBO();
+                cuentas.Add(cuenta);
+            }
+         
+            return View(cuentas);
         }
 
         // GET: Cuentas/Details/5
@@ -41,7 +55,7 @@ namespace Front.Controllers
             {
                 // TODO: Add insert logic here
 
-                ProgramServer test = new ProgramServer();
+               
                 Cuentas cuenta = new Cuentas();
                 cuenta.Nombre = collection["Nombre"];
                 cuenta.NumeroDoc = Convert.ToInt32( collection["NumeroDoc"]);
@@ -49,8 +63,8 @@ namespace Front.Controllers
                 Task<string> cuentaBCRes = test.CreateAccount(collection["Cuenta"]);
                 cuenta.CuentaBc =  cuentaBCRes.Result;
 
-                data.Cuentas.Add(cuenta);
-                data.SaveChanges();
+                //data.Cuentas.Add(cuenta);
+                //data.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }

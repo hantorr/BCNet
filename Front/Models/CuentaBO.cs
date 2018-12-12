@@ -12,6 +12,7 @@ namespace Front.Models
         public string Cuenta { get; set; }
         public string CuentaBc { get; set; }
         public int NumeroDoc { get; set; }
+        public int Saldo { get; set; }
 
     }
 }
